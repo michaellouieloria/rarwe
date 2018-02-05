@@ -29,11 +29,18 @@ export default Route.extend({
     });
 
     var ledZeppelin = Band.create({ name: 'Led Zeppelin', songs: [blackDog] });
-    var pearlJam = Band.create({ name: 'Pearl Jam', songs: [yellowLedbetter, daughter] });
+    var pearlJam = Band.create({
+      name: 'Pearl Jam',
+      description: 'Pearl Jam is an American rock band, formed in Seattle, Washington in 1990.',
+      songs: [yellowLedbetter, daughter]
+    });
     var fooFighters = Band.create({ name: 'Foo Fighters', songs: [pretender] });
     return [ledZeppelin, pearlJam, fooFighters];
   },
   actions: {
+    didTransition: function() {
+      document.title = 'Bands - Rock & Roll';
+    },
     createBand: function() {
       var name = this.get('controller').get('name');
       var band = Band.create({ name: name });

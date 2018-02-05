@@ -3,6 +3,7 @@ import EmberObject, { computed } from '@ember/object';
 export default EmberObject.extend({
   name: '',
   language: '',
+  description: '',
   init: function() {
     this._super(...arguments);
     if (!this.get('songs')) {
