@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { isEmpty } from '@ember/utils';
 import { computed } from '@ember/object';
 import { sort } from '@ember/object/computed';
+import { capitalize } from 'rarwe/helpers/capitalize';
 
 export default Controller.extend({
   queryParams: {
@@ -33,6 +34,10 @@ export default Controller.extend({
   }),
   canCreateSong: computed('songCreationStarted', 'model.songs.[]', function() {
     return this.get('songCreationStarted') || this.get('model.songs.length');
+  }),
+  newSongPlaceholder: computed('model.name', function() {
+    var bandName = this.get('model.name');
+    return `New ${capitalize(bandName)} song`;
   }),
   actions: {
     setSorting: function(option) {
